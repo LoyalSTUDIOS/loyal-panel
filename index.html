@@ -9,22 +9,15 @@
 <meta name="theme-color" content="#0b0e14">
 <title>Loyal $ — Mi Panel</title>
 <style>
-  :root{
-    --bg:#0b0e14;--card:#161b26;--card2:#1f2634;--line:#283142;
-    --txt:#eef2f8;--muted:#8b96a8;--good:#34d399;--bad:#f87171;--warn:#fbbf24;
-    --b:#60a5fa;--p:#f472b6;--y:#fbbf24;--g:#34d399;--v:#a78bfa;--o:#fb923c;--c:#22d3ee;
-  }
+  :root{--bg:#0b0e14;--card:#161b26;--card2:#1f2634;--line:#283142;--txt:#eef2f8;--muted:#8b96a8;--good:#34d399;--bad:#f87171;--warn:#fbbf24;--b:#60a5fa;--p:#f472b6;--v:#a78bfa;--o:#fb923c;--c:#22d3ee;}
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{font-family:-apple-system,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);padding-bottom:84px;font-size:16px}
-  /* LOCK */
   #lock{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:30px}
   #lock .logo{width:74px;height:74px;border-radius:20px;background:linear-gradient(135deg,#6ee7b7,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:36px;color:#0b0e14}
   #lock h1{font-size:20px}#lock p{color:var(--muted);font-size:14px;text-align:center}
   #pin{font-size:24px;letter-spacing:6px;text-align:center;padding:14px;width:200px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--txt)}
   #lock button{background:var(--b);color:#06121f;border:0;padding:14px 34px;border-radius:14px;font-size:17px;font-weight:700}
-  #err{color:var(--bad);font-size:13px;height:16px}
-  .hidden{display:none!important}
-  /* HEADER */
+  #err{color:var(--bad);font-size:13px;height:16px}.hidden{display:none!important}
   header{padding:16px 16px 10px;position:sticky;top:0;background:linear-gradient(#0b0e14,#0b0e14ee);backdrop-filter:blur(6px);z-index:10}
   .htop{display:flex;align-items:center;gap:10px}
   .logo2{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6ee7b7,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:900;color:#0b0e14}
@@ -32,210 +25,160 @@
   .wrap{padding:0 14px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
   .card h3{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
-  .big{font-size:30px;font-weight:800}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .kpi .v{font-size:24px;font-weight:800}.kpi .d{font-size:11px;color:var(--muted);margin-top:3px}
+  .big{font-size:30px;font-weight:800}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .kpi .v{font-size:22px;font-weight:800}.kpi .d{font-size:11px;color:var(--muted);margin-top:3px}
   .up{color:var(--good)}.down{color:var(--bad)}.warnc{color:var(--warn)}
-  .li{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #1d2430;font-size:14px}
-  .li:last-child{border-bottom:0}.li .amt{margin-left:auto;font-weight:700}
+  .li{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #1d2430;font-size:14px}.li:last-child{border-bottom:0}.li .amt{margin-left:auto;font-weight:700}
   .tag{font-size:10px;padding:2px 8px;border-radius:7px;font-weight:700}
-  .bar-track{height:10px;background:#0f141d;border-radius:6px;overflow:hidden;margin-top:7px}
-  .bar-fill{height:100%;border-radius:6px}
-  .prog{height:14px;background:#0f141d;border-radius:8px;overflow:hidden;margin-top:8px}
-  .prog .f{height:100%;background:linear-gradient(90deg,#34d399,#60a5fa);border-radius:8px}
+  .prog{height:16px;background:#0f141d;border-radius:8px;overflow:hidden;margin-top:8px}.prog .f{height:100%;background:linear-gradient(90deg,#34d399,#60a5fa);border-radius:8px;transition:width .6s}
   .coach{border-left:3px solid var(--b);background:var(--card2);border-radius:12px;padding:13px 14px;margin-bottom:10px}
-  .coach.bad{border-left-color:var(--bad)}.coach.good{border-left-color:var(--good)}.coach.warn{border-left-color:var(--warn)}
+  .coach.bad{border-left-color:var(--bad)}.coach.good{border-left-color:var(--good)}.coach.warn{border-left-color:var(--warn)}.coach.fire{border-left-color:var(--o)}
   .coach .t{font-weight:700;font-size:14px;margin-bottom:4px}.coach .b{font-size:13px;color:var(--muted);line-height:1.5}
   .muted{color:var(--muted)}.sm{font-size:12px}.center{text-align:center}
-  /* NAV */
+  .hito{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #1d2430}.hito:last-child{border-bottom:0}
+  .hdot{width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;background:#0f141d;border:2px solid var(--line);color:var(--muted)}
+  .hito.done .hdot{background:var(--good);border-color:var(--good);color:#06121f}
+  .hito.now .hdot{border-color:var(--warn);color:var(--warn)}
+  .hito .ht{font-weight:700;font-size:15px}.hito .hb{font-size:12px;color:var(--muted);margin-top:2px}.hito .hm{margin-left:auto;font-weight:800;font-size:13px}
   nav{position:fixed;bottom:0;left:0;right:0;background:#10151eee;backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
-  nav div{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--muted);padding:4px 10px;border-radius:10px}
-  nav div.on{color:var(--txt);background:var(--card2)}
-  nav .ic{font-size:19px}
-  .view{display:none}.view.on{display:block;animation:f .2s}
-  @keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
-  .pill{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+  nav div{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--muted);padding:4px 8px;border-radius:10px}nav div.on{color:var(--txt);background:var(--card2)}nav .ic{font-size:19px}
+  .view{display:none}.view.on{display:block;animation:f .2s}@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
 </style>
 </head>
 <body>
-
-<!-- LOCK SCREEN -->
 <div id="lock">
-  <div class="logo">L</div>
-  <h1>Loyal $ — Mi Panel</h1>
-  <p>Ingresa tu clave para ver tus finanzas</p>
+  <div class="logo">L</div><h1>Loyal $ — Mi Panel</h1><p>Ingresa tu clave</p>
   <input id="pin" type="password" inputmode="numeric" placeholder="• • • •" autocomplete="off">
-  <div id="err"></div>
-  <button onclick="unlock()">Entrar</button>
+  <div id="err"></div><button onclick="unlock()">Entrar</button>
 </div>
 
-<!-- APP -->
 <div id="app" class="hidden">
-  <header>
-    <div class="htop">
-      <div class="logo2">L</div>
-      <div><h1>Loyal Studios — Mi Panel</h1><div class="sub" id="hsub">Mayo 2026 · Bs</div></div>
-    </div>
-  </header>
-
+  <header><div class="htop"><div class="logo2">L</div><div><h1>Loyal Studios — Mi Panel</h1><div class="sub">Cuenta nueva · arranque 02/jun/2026 · Bs</div></div></div></header>
   <div class="wrap">
     <!-- RESUMEN -->
     <section class="view on" id="v-resumen">
       <div class="card center" style="background:linear-gradient(135deg,#16241f,#161b26)">
-        <h3>🏍️ Meta: moto $800 (Bs 8.000)</h3>
-        <div class="big up" id="moto-txt">Bs 0 / 8.000</div>
-        <div class="prog"><div class="f" id="moto-bar" style="width:0%"></div></div>
-        <div class="sm muted" id="moto-d" style="margin-top:8px"></div>
+        <h3>🏆 Meta principal — Vender todo (2.5x)</h3>
+        <div class="big up" id="meta-txt">Bs 0 / 44.500</div>
+        <div class="prog"><div class="f" id="meta-bar" style="width:0%"></div></div>
+        <div class="sm muted" id="meta-d" style="margin-top:8px"></div>
+      </div>
+      <div class="card" style="border-color:#3a4a2e">
+        <h3>🎯 Tu próxima mini-meta</h3>
+        <div id="next-hito"></div>
       </div>
       <div class="row2">
-        <div class="card kpi"><h3>Ventas (desde 26/abr)</h3><div class="v up" id="k-ventas">Bs 0</div><div class="d" id="k-ventas-d"></div></div>
-        <div class="card kpi"><h3>Ganancia bruta</h3><div class="v up" id="k-gan">Bs 0</div><div class="d">precio − costo</div></div>
-        <div class="card kpi"><h3>Caja hoy</h3><div class="v down" id="k-caja">Bs 0</div><div class="d">efectivo disponible</div></div>
-        <div class="card kpi"><h3>Stock sin subir</h3><div class="v warnc" id="k-stock">0</div><div class="d">prendas invisibles</div></div>
+        <div class="card kpi"><h3>Ventas (desde hoy)</h3><div class="v up" id="k-ventas">Bs 0</div><div class="d" id="k-ventas-d">0 ventas</div></div>
+        <div class="card kpi"><h3>Caja</h3><div class="v" id="k-caja">Bs 0</div><div class="d">efectivo</div></div>
+        <div class="card kpi"><h3>Prendas por vender</h3><div class="v" id="k-rest">263</div><div class="d">de 274</div></div>
+        <div class="card kpi"><h3>Sin subir a la web</h3><div class="v warnc" id="k-stock">227</div><div class="d">¡súbelas!</div></div>
       </div>
-      <div class="card">
-        <h3>⚠️ Dónde se fue tu ganancia</h3>
-        <div id="fugas"></div>
+    </section>
+
+    <!-- METAS -->
+    <section class="view" id="v-metas">
+      <div class="card"><h3>🪜 Tu escalera (ventas acumuladas)</h3><div id="hitos"></div></div>
+      <div class="card" style="border-color:#3a2e4a">
+        <h3>🏍️ La moto ($800 / Bs 8.000) — 2da meta</h3>
+        <div class="sm" style="line-height:1.6">La moto NO se compra primero. Se compra cuando:<br>
+        ✅ Recuperaste la inversión (Bs 17.800) → el negocio ya se paga solo<br>
+        ✅ Tienes Bs 8.000 apartados <b>que NO necesitas para reponer stock</b><br><br>
+        <span class="warnc">Si la compras antes, te comes el capital y matas el negocio por un antojo. Primero el negocio camina, después te subes a la moto. 🏍️</span></div>
       </div>
     </section>
 
     <!-- VENTAS -->
     <section class="view" id="v-ventas">
-      <div class="card center"><h3>Total vendido desde 26/abril</h3><div class="big up" id="vt">Bs 0</div><div class="sm muted" id="vt-d"></div></div>
-      <div class="card"><h3>Tus ventas</h3><div id="ventas-list"></div></div>
+      <div class="card center"><h3>Ventas controladas (desde hoy)</h3><div class="big up" id="vt">Bs 0</div><div class="sm muted" id="vt-d">Aún no registras ninguna</div></div>
+      <div class="card"><h3>Historial</h3><div id="ventas-list"><div class="center muted sm" style="padding:20px">📝 Anota tu primera venta y aparece aquí.<br>Escríbeme: "vendí [prenda] [precio] qr/efectivo"</div></div></div>
     </section>
 
     <!-- NEGOCIO -->
     <section class="view" id="v-negocio">
       <div class="row2">
-        <div class="card kpi"><h3>Invertido en ropa</h3><div class="v">Bs 17.800</div><div class="d">274 prendas (papá)</div></div>
-        <div class="card kpi"><h3>En web</h3><div class="v" id="n-web">47 / 274</div><div class="d">resto sin subir</div></div>
+        <div class="card kpi"><h3>Invertido en ropa</h3><div class="v">Bs 17.800</div><div class="d">274 prendas</div></div>
+        <div class="card kpi"><h3>En web</h3><div class="v">47 / 274</div><div class="d">resto sin subir</div></div>
       </div>
-      <div class="card"><h3>Gastos del negocio</h3><div id="gastos-neg"></div></div>
-      <div class="card"><h3>Costo por tipo de prenda</h3>
+      <div class="card"><h3>Costo por tipo (tu margen)</h3>
         <div class="li"><span>🧥 Puffer TNF / Columbia</span><span class="amt">Bs 291</span></div>
-        <div class="li"><span>👕 Hombre marca (nuevo)</span><span class="amt">Bs 146</span></div>
-        <div class="li"><span>🩱 Activewear mujer</span><span class="amt">Bs 14,5</span></div>
+        <div class="li"><span>👕 Hombre marca (nuevo) 🔥</span><span class="amt">Bs 146</span></div>
+        <div class="li"><span>🩱 Activewear mujer (volumen)</span><span class="amt">Bs 14,5</span></div>
       </div>
-    </section>
-
-    <!-- PERSONAL -->
-    <section class="view" id="v-personal">
-      <div class="card center"><h3>Tope mensual (tu mesada)</h3><div class="big" id="p-tope">Bs 3.000</div><div class="sm muted">1.500 alquiler + 1.500 comida/gastos</div></div>
-      <div class="card"><h3>Tus fijos del mes (pagar el 15)</h3>
-        <div class="li"><span>🏠 Alquiler</span><span class="amt">Bs 1.500</span></div>
-        <div class="li"><span>📶 Wifi</span><span class="amt">Bs 90</span></div>
-        <div class="li"><span>💡 Luz</span><span class="amt">Bs 80</span></div>
+      <div class="card"><h3>Lo que ya vendiste (histórico, antes del reset)</h3>
+        <div class="li"><span>11 prendas</span><span class="amt up">Bs 5.585</span></div>
+        <div class="sm muted" style="margin-top:8px">No lo borres de tu cabeza: ya probaste que vendes. Ahora a hacerlo CON control.</div>
       </div>
-      <div class="card"><h3>Gastos personales registrados</h3><div id="gastos-per"></div></div>
     </section>
 
     <!-- COACH -->
-    <section class="view" id="v-coach">
-      <div class="card"><h3>🧠 Tu coach</h3><div id="coach" style="margin-top:8px"></div></div>
-    </section>
+    <section class="view" id="v-coach"><div class="card"><h3>🧠 Tu coach</h3><div id="coach" style="margin-top:8px"></div></div></section>
   </div>
-
   <nav>
     <div class="on" data-v="resumen"><span class="ic">📊</span>Resumen</div>
+    <div data-v="metas"><span class="ic">🪜</span>Metas</div>
     <div data-v="ventas"><span class="ic">🟢</span>Ventas</div>
     <div data-v="negocio"><span class="ic">🛍️</span>Negocio</div>
-    <div data-v="personal"><span class="ic">🏠</span>Personal</div>
     <div data-v="coach"><span class="ic">🧠</span>Coach</div>
   </nav>
 </div>
 
 <script>
-/* ====== CLAVE (cambiala pidiéndome) ====== */
-const CLAVE = "1850";
-function unlock(){
-  const v=document.getElementById('pin').value.trim();
-  if(v===CLAVE){document.getElementById('lock').classList.add('hidden');document.getElementById('app').classList.remove('hidden');render();}
-  else{document.getElementById('err').textContent="Clave incorrecta";}
-}
+const CLAVE="0325";
+function unlock(){const v=document.getElementById('pin').value.trim();if(v===CLAVE){document.getElementById('lock').classList.add('hidden');document.getElementById('app').classList.remove('hidden');render();}else{document.getElementById('err').textContent="Clave incorrecta";}}
 document.getElementById('pin').addEventListener('keyup',e=>{if(e.key==='Enter')unlock();});
 
-/* ====== DATOS REALES ====== */
-const D = {
-  ventas:[
-    {p:"5 Hoodies Jordan",via:"QR",m:2245},
-    {p:"Chamarra Kobe Mamba",via:"QR",m:1400},
-    {p:"Columbia gris L",via:"QR",m:590},
-    {p:"Columbia café",via:"QR",m:560},
-    {p:"Buzo Air Jordan",via:"💵",m:520},
-    {p:"Adidas Tee Negra M",via:"QR",m:230},
-    {p:"Ropa Loyal (Franco)",via:"QR",m:40}
-  ],
-  gananciaBruta:3676,
+/* ===== DATOS (cuenta nueva desde 02/jun) ===== */
+const D={
+  metaPrincipal:44500,      // 2.5x de la inversion = vender todo
+  ventasControladas:0,      // arranca en CERO
+  ventas:[],                // vacio: se llena cuando registres
   caja:0,
-  stockSinSubir:227, stockTotal:274, stockWeb:47,
-  fugas:[
-    {n:"Pago deuda (fuchi)",m:1430,c:"--bad"},
-    {n:"Higgsfield",m:1082,c:"--v"},
-    {n:"Meta Ads",m:748,c:"--b"},
-    {n:"Claude",m:203,c:"--c"},
-    {n:"Vida diaria (almuerzos, pizza, cerveza…)",m:500,c:"--o"}
-  ],
-  gastosPersonal:[
-    {t:"Tecnología",d:"Arreglo batería iPhone",m:500},
-    {t:"Servicios",d:"Luz (cobro doble)",m:160},
-    {t:"Fiesta/Vicios",d:"Marihuana (CORTADO ✂️)",m:250},
-    {t:"Fiesta/Vicios",d:"Rave (CORTADO ✂️)",m:100}
-  ],
-  motoMeta:8000
+  prendasRestantes:263, prendasTotal:274, stockSinSubir:227,
+  hitos:[
+    {ic:"🫁",n:"Caja de oxígeno",meta:2000,b:"Tu primer colchón. Deja de estar en 0."},
+    {ic:"🏍️",n:"Equivalente a la moto",meta:8000,b:"Ya juntaste lo de la moto… pero aún no la compres."},
+    {ic:"💪",n:"Inversión recuperada",meta:17800,b:"El negocio se paga solo. AQUÍ ya puedes comprar la moto."},
+    {ic:"📦",n:"Pallet Nike (re-pedido)",meta:31500,b:"Junta los $4.500 para 400 prendas Nike y escala."},
+    {ic:"🏆",n:"2.5x completo",meta:44500,b:"Vendiste TODO. Misión cumplida, ahora eres mayorista."}
+  ]
 };
 const Bs=n=>"Bs "+Math.round(n).toLocaleString("es-BO");
 const $=id=>document.getElementById(id);
-const cssv=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 
 function render(){
-  const ventasTotal=D.ventas.reduce((s,v)=>s+v.m,0);
-  // Resumen
-  $("k-ventas").textContent=Bs(ventasTotal);
-  $("k-ventas-d").textContent=D.ventas.length+" ventas";
-  $("k-gan").textContent=Bs(D.gananciaBruta);
-  $("k-caja").textContent=Bs(D.caja);
-  $("k-stock").textContent=D.stockSinSubir;
-  // moto: progreso = ganancia bruta acumulada hacia 8000 (proxy)
-  const prog=Math.min(D.gananciaBruta/D.motoMeta*100,100);
-  $("moto-txt").textContent=Bs(D.gananciaBruta)+" / 8.000";
-  $("moto-bar").style.width=prog.toFixed(0)+"%";
-  $("moto-d").textContent=`Llevas el ${prog.toFixed(0)}%. Te faltan ${Bs(D.motoMeta-D.gananciaBruta)} de ganancia. Subir las ${D.stockSinSubir} prendas que faltan es tu camino.`;
-  // fugas
-  $("fugas").innerHTML=D.fugas.map(f=>{
-    const pct=Math.min(f.m/D.gananciaBruta*100,100);
-    return `<div style="margin-bottom:11px"><div class="li" style="padding:0 0 4px;border:0"><span class="sm">${f.n}</span><span class="amt down">${Bs(f.m)}</span></div><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${cssv(f.c)}"></div></div></div>`;
+  const V=D.ventasControladas;
+  $("meta-txt").textContent=Bs(V)+" / 44.500";
+  $("meta-bar").style.width=Math.min(V/D.metaPrincipal*100,100)+"%";
+  $("meta-d").textContent=`Te faltan ${Bs(D.metaPrincipal-V)} para vender todo tu stock al 2.5x.`;
+  $("k-ventas").textContent=Bs(V);$("k-ventas-d").textContent=D.ventas.length+" ventas";
+  $("k-caja").textContent=Bs(D.caja);$("k-rest").textContent=D.prendasRestantes;$("k-stock").textContent=D.stockSinSubir;
+  $("vt").textContent=Bs(V);
+
+  // proxima mini-meta
+  const next=D.hitos.find(h=>V<h.meta)||D.hitos[D.hitos.length-1];
+  const falta=Math.max(next.meta-V,0);
+  $("next-hito").innerHTML=`<div style="display:flex;align-items:center;gap:12px"><div style="font-size:30px">${next.ic}</div><div><div style="font-weight:700">${next.n}</div><div class="sm muted">${next.b}</div></div><div style="margin-left:auto;text-align:right"><div class="up" style="font-weight:800">${Bs(next.meta)}</div><div class="sm muted">faltan ${Bs(falta)}</div></div></div>`;
+
+  // escalera
+  $("hitos").innerHTML=D.hitos.map(h=>{
+    const done=V>=h.meta; const now=!done && V<h.meta && D.hitos.find(x=>V<x.meta)===h;
+    return `<div class="hito ${done?'done':''} ${now?'now':''}"><div class="hdot">${done?'✓':h.ic}</div><div><div class="ht">${h.n}</div><div class="hb">${h.b}</div></div><div class="hm ${done?'up':''}">${Bs(h.meta)}</div></div>`;
   }).join("");
 
-  // ventas
-  $("vt").textContent=Bs(ventasTotal);
-  $("vt-d").textContent="Ganancia bruta ≈ "+Bs(D.gananciaBruta);
-  $("ventas-list").innerHTML=D.ventas.map(v=>`<div class="li"><span class="tag" style="background:${v.via==='💵'?'#3b2f12':'#0f2a3a'};color:${v.via==='💵'?'--warn':'#22d3ee'}">${v.via}</span><span>${v.p}</span><span class="amt up">${Bs(v.m)}</span></div>`).join("");
-
-  // negocio
-  $("n-web").textContent=D.stockWeb+" / "+D.stockTotal;
-  $("gastos-neg").innerHTML=D.fugas.filter(f=>f.n!=="Vida diaria (almuerzos, pizza, cerveza…)").map(f=>`<div class="li"><span>${f.n}</span><span class="amt">${Bs(f.m)}</span></div>`).join("")+`<div class="li"><span>Deliverys</span><span class="amt">Bs 100</span></div>`;
-
-  // personal
-  $("gastos-per").innerHTML=D.gastosPersonal.map(g=>`<div class="li"><span class="tag" style="background:#241a2e;color:#a78bfa">${g.t}</span><span>${g.d}</span><span class="amt">${Bs(g.m)}</span></div>`).join("");
+  // ventas list
+  if(D.ventas.length) $("ventas-list").innerHTML=D.ventas.map(v=>`<div class="li"><span>${v.p}</span><span class="amt up">${Bs(v.m)}</span></div>`).join("");
 
   // coach
   const ins=[
-    {k:"good",t:"💪 Tu negocio SÍ funciona",b:`Vendiste ${Bs(ventasTotal)} en 5 semanas con ${Bs(D.gananciaBruta)} de ganancia bruta. El problema nunca fue vender.`},
-    {k:"bad",t:"🩸 Pero terminaste en Bs 0",b:`Tu ganancia se fue en la deuda (1.430), Higgsfield (1.082), ads (748) y la vida diaria. Ganaste bien y lo gastaste todo.`},
-    {k:"warn",t:"📦 227 prendas invisibles",b:`Tienes el 83% de tu mercadería SIN subir a la web. Esa es tu palanca #1 y es gratis. Sube stock antes de gastar en nada.`},
-    {k:"good",t:"✂️ Vicios cortados",b:`Decidiste cortar marihuana y raves y no tocar la plata del negocio. Esa decisión vale más que cualquier campaña. Respétala.`},
-    {k:"warn",t:"🤖 Higgsfield vence el 11/jun",b:`Es tu 2da fuga más grande (1.082). No lo renueves hasta que las ventas lo paguen solas.`}
+    {k:"fire",t:"🔥 Arrancamos de cero — y eso es PODER",b:"Ya no vuelas a ciegas. Cada venta desde hoy la ves subir aquí. La diferencia entre el que fracasa y el que escala no es la plata, es el CONTROL. Y eso ya lo tienes."},
+    {k:"good",t:"💪 No partes débil",b:"Ya vendiste Bs 5.585 sin control. Imagínate CON control y subiendo stock. Tienes producto bueno y barato. La materia prima del éxito ya está en tu cuarto."},
+    {k:"warn",t:"📦 Misión #1 de esta semana",b:"Sube 50 prendas de HOMBRE a la web (es tu margen). No vendes lo que nadie ve. Mientras 227 prendas estén en cajas, estás perdiendo plata cada día."},
+    {k:"bad",t:"⚡ Sin vueltas: tu meta semanal",b:"Vende mínimo 8-10 prendas por semana. Si una semana vendes 2, no te mientas: o no subiste stock, o no moviste el culo. El panel no miente."},
+    {k:"good",t:"🏍️ La moto es la recompensa, no el atajo",b:"Primero recuperas los 17.800 de tu viejo. Ahí el negocio camina solo. RECIÉN ahí te subes a la moto sin culpa. Disciplina ahora = libertad después."}
   ];
   $("coach").innerHTML=ins.map(i=>`<div class="coach ${i.k}"><div class="t">${i.t}</div><div class="b">${i.b}</div></div>`).join("");
 }
-
-document.querySelectorAll('nav div').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('nav div').forEach(x=>x.classList.remove('on'));
-  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');$("v-"+b.dataset.v).classList.add('on');
-  window.scrollTo(0,0);
-});
+document.querySelectorAll('nav div').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav div').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));b.classList.add('on');$("v-"+b.dataset.v).classList.add('on');window.scrollTo(0,0);});
 </script>
 </body>
 </html>
